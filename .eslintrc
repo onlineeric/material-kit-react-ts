@@ -48,6 +48,12 @@
 		}
 	},
 	"rules": {
+		"import/extensions": ["error", "ignorePackages", {
+			"js": "never",
+			"jsx": "never",
+			"ts": "never",
+			"tsx": "never"
+		}],
 		"no-alert": 0,
 		"camelcase": 0,
 		"no-console": 0,
