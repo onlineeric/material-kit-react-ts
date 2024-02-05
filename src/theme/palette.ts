@@ -1,11 +1,15 @@
 import { alpha } from '@mui/material/styles';
+import { Color, Palette, createTheme, TypeBackground } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
 // SETUP COLORS
-
-export const grey = {
+interface ExtendedColor extends Color {
+  0: string;
+}
+export const grey: ExtendedColor = {
   0: '#FFFFFF',
+  50: '#F9FAFB',
   100: '#F9FAFB',
   200: '#F4F6F8',
   300: '#DFE3E8',
@@ -15,6 +19,10 @@ export const grey = {
   700: '#454F5B',
   800: '#212B36',
   900: '#161C24',
+  A100: '#000000', // Placeholder, as grey typically does not have accent colors
+  A200: '#000000', // Placeholder
+  A400: '#000000', // Placeholder
+  A700: '#000000', // Placeholder
 };
 
 export const primary = {
@@ -86,7 +94,9 @@ export const action = {
   disabledOpacity: 0.48,
 };
 
+const paletteBase = createTheme().palette;
 const base = {
+  ...paletteBase,
   primary,
   secondary,
   info,
@@ -101,7 +111,16 @@ const base = {
 
 // ----------------------------------------------------------------------
 
-export function palette() {
+// Extend TypeBackground to include the neutral property
+interface ExtendedTypeBackground extends TypeBackground {
+  neutral: string;
+}
+
+// Use ExtendedTypeBackground in your custom Palette type
+interface ExtendedPalette extends Palette {
+  background: ExtendedTypeBackground;
+}
+export function palette() : ExtendedPalette {
   return {
     ...base,
     mode: 'light',
