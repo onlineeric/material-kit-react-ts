@@ -1,5 +1,5 @@
 import { alpha } from '@mui/material/styles';
-import { Color, Palette, createTheme, TypeBackground } from '@mui/material';
+import { Color, Palette, TypeAction, createTheme, TypeBackground } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -84,7 +84,8 @@ export const common = {
   white: '#FFFFFF',
 };
 
-export const action = {
+export const action: TypeAction = {
+  ...createTheme().palette.action,
   hover: alpha(grey[500], 0.08),
   selected: alpha(grey[500], 0.16),
   disabled: alpha(grey[500], 0.8),
@@ -94,9 +95,8 @@ export const action = {
   disabledOpacity: 0.48,
 };
 
-const paletteBase = createTheme().palette;
 const base = {
-  ...paletteBase,
+  ...createTheme().palette,
   primary,
   secondary,
   info,
