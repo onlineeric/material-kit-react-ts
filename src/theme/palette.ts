@@ -117,7 +117,7 @@ interface ExtendedTypeBackground extends TypeBackground {
 }
 
 // Use ExtendedTypeBackground in your custom Palette type
-interface ExtendedPalette extends Palette {
+export interface ExtendedPalette extends Palette {
   background: ExtendedTypeBackground;
 }
 export function palette() : ExtendedPalette {
