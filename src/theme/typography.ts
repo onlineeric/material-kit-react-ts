@@ -1,4 +1,4 @@
-import { TypographyOptions } from "@mui/material/styles/createTypography";
+import { Typography } from "@mui/material/styles/createTypography";
 
 export function remToPx(value: string) {
 	return Math.round(parseFloat(value) * 16);
@@ -27,12 +27,12 @@ export const secondaryFont = 'Barlow, sans-serif';
 
 // ----------------------------------------------------------------------
 
-export interface ExtendedTypographyOptions extends TypographyOptions {
+export interface ExtendedTypography extends Typography {
 	fontSecondaryFamily: string;
 	fontWeightSemiBold: number;
 }
 
-export const typography: ExtendedTypographyOptions = {
+export const typography: ExtendedTypography = {
 	fontFamily: primaryFont,
 	fontSecondaryFamily: secondaryFont,
 	fontWeightRegular: 400,
@@ -109,4 +109,9 @@ export const typography: ExtendedTypographyOptions = {
 		fontSize: pxToRem(14),
 		textTransform: 'unset',
 	},
+	// below are placeholders, before convert to typescript, these fields are not exist
+	fontSize: 14,
+	fontWeightLight: 300,
+	htmlFontSize: 16,
+	pxToRem,
 };
