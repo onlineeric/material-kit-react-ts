@@ -1,11 +1,15 @@
 import { alpha } from '@mui/material/styles';
+import { Color, Palette, TypeAction, createTheme, TypeBackground } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
 // SETUP COLORS
-
-export const grey = {
+interface ExtendedColor extends Color {
+  0: string;
+}
+export const grey: ExtendedColor = {
   0: '#FFFFFF',
+  50: '#F9FAFB',
   100: '#F9FAFB',
   200: '#F4F6F8',
   300: '#DFE3E8',
@@ -15,6 +19,10 @@ export const grey = {
   700: '#454F5B',
   800: '#212B36',
   900: '#161C24',
+  A100: '#000000', // Placeholder, as grey typically does not have accent colors
+  A200: '#000000', // Placeholder
+  A400: '#000000', // Placeholder
+  A700: '#000000', // Placeholder
 };
 
 export const primary = {
@@ -76,7 +84,8 @@ export const common = {
   white: '#FFFFFF',
 };
 
-export const action = {
+export const action: TypeAction = {
+  ...createTheme().palette.action,
   hover: alpha(grey[500], 0.08),
   selected: alpha(grey[500], 0.16),
   disabled: alpha(grey[500], 0.8),
@@ -87,6 +96,7 @@ export const action = {
 };
 
 const base = {
+  ...createTheme().palette,
   primary,
   secondary,
   info,
@@ -101,7 +111,16 @@ const base = {
 
 // ----------------------------------------------------------------------
 
-export function palette() {
+// Extend TypeBackground to include the neutral property
+interface ExtendedTypeBackground extends TypeBackground {
+  neutral: string;
+}
+
+// Use ExtendedTypeBackground in your custom Palette type
+export interface ExtendedPalette extends Palette {
+  background: ExtendedTypeBackground;
+}
+export function palette() : ExtendedPalette {
   return {
     ...base,
     mode: 'light',
