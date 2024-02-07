@@ -3,10 +3,35 @@ import { dividerClasses } from '@mui/material/Divider';
 import { checkboxClasses } from '@mui/material/Checkbox';
 import { menuItemClasses } from '@mui/material/MenuItem';
 import { autocompleteClasses } from '@mui/material/Autocomplete';
+import { CSSProperties } from 'react';
+import { CustomTheme } from '.';
 
-// ----------------------------------------------------------------------
+export interface BgBlurProps {
+  color?: string;
+  blur?: number;
+  opacity?: number;
+  imgUrl?: string;
+}
 
-export const paper = ({ theme, bgcolor, dropdown }) => ({
+export interface BgGradientProps {
+  direction?: string;
+  startColor?: string;
+  endColor?: string;
+  imgUrl?: string;
+  color?: string;
+}
+
+export interface PaperProps {
+  theme: CustomTheme;
+  bgcolor?: string;
+  dropdown?: boolean;
+}
+
+export interface MenuItemProps {
+  theme: CustomTheme;
+}
+
+export const paper = ({ theme, bgcolor, dropdown }: PaperProps): CSSProperties => ({
   ...bgBlur({
     blur: 20,
     opacity: 0.9,
@@ -31,7 +56,7 @@ export const paper = ({ theme, bgcolor, dropdown }) => ({
 
 // ----------------------------------------------------------------------
 
-export const menuItem = (theme) => ({
+export const menuItem = (theme: CustomTheme): CSSProperties => ({
   ...theme.typography.body2,
   padding: theme.spacing(0.75, 1),
   borderRadius: theme.shape.borderRadius * 0.75,
@@ -63,7 +88,7 @@ export const menuItem = (theme) => ({
 
 // ----------------------------------------------------------------------
 
-export function bgBlur(props) {
+export function bgBlur(props: BgBlurProps): CSSProperties {
   const color = props?.color || '#000000';
   const blur = props?.blur || 6;
   const opacity = props?.opacity || 0.8;
@@ -97,7 +122,7 @@ export function bgBlur(props) {
 
 // ----------------------------------------------------------------------
 
-export function bgGradient(props) {
+export function bgGradient(props: BgGradientProps): CSSProperties {
   const direction = props?.direction || 'to bottom';
   const startColor = props?.startColor;
   const endColor = props?.endColor;
@@ -122,7 +147,7 @@ export function bgGradient(props) {
 
 // ----------------------------------------------------------------------
 
-export function textGradient(value) {
+export function textGradient(value: string): CSSProperties {
   return {
     background: `-webkit-linear-gradient(${value})`,
     WebkitBackgroundClip: 'text',
