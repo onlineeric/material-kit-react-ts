@@ -25,7 +25,16 @@ export const grey: ExtendedColor = {
   A700: '#000000', // Placeholder
 };
 
-export const primary = {
+export type ExtendedPaletteColor = {
+  lighter: string;
+  light: string;
+  main: string;
+  dark: string;
+  darker: string;
+  contrastText: string;
+};
+
+export const primary: ExtendedPaletteColor = {
   lighter: '#D0ECFE',
   light: '#73BAFB',
   main: '#1877F2',
@@ -34,7 +43,7 @@ export const primary = {
   contrastText: '#FFFFFF',
 };
 
-export const secondary = {
+export const secondary: ExtendedPaletteColor = {
   lighter: '#EFD6FF',
   light: '#C684FF',
   main: '#8E33FF',
@@ -43,7 +52,7 @@ export const secondary = {
   contrastText: '#FFFFFF',
 };
 
-export const info = {
+export const info: ExtendedPaletteColor = {
   lighter: '#CAFDF5',
   light: '#61F3F3',
   main: '#00B8D9',
@@ -52,7 +61,7 @@ export const info = {
   contrastText: '#FFFFFF',
 };
 
-export const success = {
+export const success: ExtendedPaletteColor = {
   lighter: '#C8FAD6',
   light: '#5BE49B',
   main: '#00A76F',
@@ -61,7 +70,7 @@ export const success = {
   contrastText: '#FFFFFF',
 };
 
-export const warning = {
+export const warning: ExtendedPaletteColor = {
   lighter: '#FFF5CC',
   light: '#FFD666',
   main: '#FFAB00',
@@ -70,7 +79,7 @@ export const warning = {
   contrastText: grey[800],
 };
 
-export const error = {
+export const error: ExtendedPaletteColor = {
   lighter: '#FFE9D5',
   light: '#FFAC82',
   main: '#FF5630',
@@ -118,8 +127,15 @@ interface ExtendedTypeBackground extends TypeBackground {
 
 // Use ExtendedTypeBackground in your custom Palette type
 export interface ExtendedPalette extends Palette {
+  primary: ExtendedPaletteColor,
+  secondary: ExtendedPaletteColor,
+  info: ExtendedPaletteColor,
+  success: ExtendedPaletteColor,
+  warning: ExtendedPaletteColor,
+  error: ExtendedPaletteColor,
   background: ExtendedTypeBackground;
 }
+
 export function palette() : ExtendedPalette {
   return {
     ...base,
