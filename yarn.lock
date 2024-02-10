@@ -362,6 +362,13 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-2.0.2.tgz#d9fae00a2d5cb40f92cfe64b47ad749fbc38f917"
   integrity sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==
 
+"@iconify/iconify@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@iconify/iconify/-/iconify-3.1.1.tgz#aa0f3807be2eab53e86228f7bb1ad3bd59bcec1a"
+  integrity sha512-1nemfyD/OJzh9ALepH7YfuuP8BdEB24Skhd8DXWh0hzcOxImbb1ZizSZkpCzAwSZSGcJFmscIBaBQu+yLyWaxQ==
+  dependencies:
+    "@iconify/types" "^2.0.0"
+
 "@iconify/react@^4.1.1":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@iconify/react/-/react-4.1.1.tgz#da1bf03cdca9427f07cf22cf5b63fa8f02db4722"
