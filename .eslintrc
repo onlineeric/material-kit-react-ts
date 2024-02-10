@@ -48,6 +48,7 @@
 		}
 	},
 	"rules": {
+		"react/prop-types": 0,
 		"import/extensions": ["error", "ignorePackages", {
 			"js": "never",
 			"jsx": "never",
