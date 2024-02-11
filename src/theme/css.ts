@@ -1,8 +1,9 @@
-import { alpha, createStyles } from '@mui/material/styles';
+import { alpha } from '@mui/material/styles';
 import { dividerClasses } from '@mui/material/Divider';
 import { checkboxClasses } from '@mui/material/Checkbox';
 import { menuItemClasses } from '@mui/material/MenuItem';
 import { autocompleteClasses } from '@mui/material/Autocomplete';
+import { createStyles } from '@mui/styles';
 import { CSSProperties } from 'react';
 import { CustomTheme } from '.';
 
@@ -61,33 +62,35 @@ export const paper = ({ theme, bgcolor, dropdown }: PaperProps): CSSProperties =
 // ----------------------------------------------------------------------
 
 export const menuItem = (theme: CustomTheme) => createStyles({
-	...theme.typography.body2,
-	padding: theme.spacing(0.75, 1),
-	borderRadius: theme.shape.borderRadius * 0.75,
-	'&:not(:last-of-type)': {
-		marginBottom: 4,
-	},
-	[`&.${menuItemClasses.selected}`]: {
-		fontWeight: theme.typography.fontWeightSemiBold,
-		backgroundColor: theme.palette.action.selected,
-		'&:hover': {
-			backgroundColor: theme.palette.action.hover,
+	root: {
+		...theme.typography.body2,
+		padding: theme.spacing(0.75, 1),
+		borderRadius: theme.shape.borderRadius * 0.75,
+		'&:not(:last-of-type)': {
+			marginBottom: 4,
 		},
-	},
-	[`& .${checkboxClasses.root}`]: {
-		padding: theme.spacing(0.5),
-		marginLeft: theme.spacing(-0.5),
-		marginRight: theme.spacing(0.5),
-	},
-	[`&.${autocompleteClasses.option}[aria-selected="true"]`]: {
-		backgroundColor: theme.palette.action.selected,
-		'&:hover': {
-			backgroundColor: theme.palette.action.hover,
+		[`&.${menuItemClasses.selected}`]: {
+			fontWeight: theme.typography.fontWeightSemiBold,
+			backgroundColor: theme.palette.action.selected,
+			'&:hover': {
+				backgroundColor: theme.palette.action.hover,
+			},
 		},
-	},
-	[`&+.${dividerClasses.root}`]: {
-		margin: theme.spacing(0.5, 0),
-	},
+		[`& .${checkboxClasses.root}`]: {
+			padding: theme.spacing(0.5),
+			marginLeft: theme.spacing(-0.5),
+			marginRight: theme.spacing(0.5),
+		},
+		[`&.${autocompleteClasses.option}[aria-selected="true"]`]: {
+			backgroundColor: theme.palette.action.selected,
+			'&:hover': {
+				backgroundColor: theme.palette.action.hover,
+			},
+		},
+		[`&+.${dividerClasses.root}`]: {
+			margin: theme.spacing(0.5, 0),
+		},
+	}
 });
 
 // ----------------------------------------------------------------------
@@ -100,27 +103,31 @@ export function bgBlur(props: BgBlurProps) {
 
 	if (imgUrl) {
 		return createStyles({
-			position: 'relative',
-			backgroundImage: `url(${imgUrl})`,
-			'&:before': {
-				position: 'absolute',
-				top: 0,
-				left: 0,
-				zIndex: 9,
-				content: '""',
-				width: '100%',
-				height: '100%',
-				backdropFilter: `blur(${blur}px)`,
-				WebkitBackdropFilter: `blur(${blur}px)`,
-				backgroundColor: alpha(color, opacity),
-			},
+			root: {
+				position: 'relative',
+				backgroundImage: `url(${imgUrl})`,
+				'&:before': {
+					position: 'absolute',
+					top: 0,
+					left: 0,
+					zIndex: 9,
+					content: '""',
+					width: '100%',
+					height: '100%',
+					backdropFilter: `blur(${blur}px)`,
+					WebkitBackdropFilter: `blur(${blur}px)`,
+					backgroundColor: alpha(color, opacity),
+				},
+			}
 		});
 	}
 
 	return createStyles({
-		backdropFilter: `blur(${blur}px)`,
-		WebkitBackdropFilter: `blur(${blur}px)`,
-		backgroundColor: alpha(color, opacity),
+		root: {
+			backdropFilter: `blur(${blur}px)`,
+			WebkitBackdropFilter: `blur(${blur}px)`,
+			backgroundColor: alpha(color, opacity),
+		}
 	});
 }
 
