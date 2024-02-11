@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
-
+import { CSSProperties, ForwardedRef, forwardRef } from 'react';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import { useTheme } from '@mui/material/styles';
-
 import { RouterLink } from 'src/routes/components';
 
-// ----------------------------------------------------------------------
-
-const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
+interface LogoProps {
+  disabledLink?: boolean;
+  sx?: CSSProperties;
+}
+const Logo = forwardRef((props: LogoProps, ref: ForwardedRef<HTMLDivElement>) => {
+  const { disabledLink = false, sx, ...other } = props;
   const theme = useTheme();
 
   const PRIMARY_LIGHT = theme.palette.primary.light;
@@ -86,10 +86,5 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
     </Link>
   );
 });
-
-Logo.propTypes = {
-  disabledLink: PropTypes.bool,
-  sx: PropTypes.object,
-};
 
 export default Logo;
