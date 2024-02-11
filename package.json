@@ -30,6 +30,7 @@
     "@mui/lab": "^5.0.0-alpha.163",
     "@mui/material": "^5.15.7",
     "@mui/styles": "^5.15.9",
+    "@mui/system": "^5.15.9",
     "@types/numeral": "^2.0.5",
     "apexcharts": "^3.45.2",
     "date-fns": "^3.3.1",
