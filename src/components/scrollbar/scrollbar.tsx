@@ -1,13 +1,16 @@
 import PropTypes from 'prop-types';
-import { memo, forwardRef } from 'react';
+import { memo, forwardRef, ReactNode, CSSProperties } from 'react';
 
 import Box from '@mui/material/Box';
 
 import { StyledScrollbar, StyledRootScrollbar } from './styles';
 
-// ----------------------------------------------------------------------
-
-const Scrollbar = forwardRef(({ children, sx, ...other }, ref) => {
+interface ScrollbarProps {
+  children: ReactNode;
+  sx?: CSSProperties;
+  [x: string]: unknown;
+}
+const Scrollbar = forwardRef<HTMLDivElement, ScrollbarProps>(({ children, sx, ...other }, ref) => {
   const userAgent = typeof navigator === 'undefined' ? 'SSR' : navigator.userAgent;
 
   const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
