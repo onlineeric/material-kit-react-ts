@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 
 import Box from '@mui/material/Box';
 import Popover from '@mui/material/Popover';
@@ -6,8 +6,13 @@ import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 
 // ----------------------------------------------------------------------
+interface LangOption {
+  value: string;
+  label: string;
+  icon: string;
+}
 
-const LANGS = [
+const LANGS: LangOption[] = [
   {
     value: 'en',
     label: 'English',
@@ -28,9 +33,9 @@ const LANGS = [
 // ----------------------------------------------------------------------
 
 export default function LanguagePopover() {
-  const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState<HTMLElement | null>(null);
 
-  const handleOpen = (event) => {
+  const handleOpen = (event: MouseEvent<HTMLElement>) => {
     setOpen(event.currentTarget);
   };
 
