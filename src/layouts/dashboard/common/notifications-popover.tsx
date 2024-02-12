@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { MouseEvent, useState } from 'react';
 import { set, sub } from 'date-fns';
 import { faker } from '@faker-js/faker';
 
@@ -24,8 +23,17 @@ import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
 // ----------------------------------------------------------------------
+interface NotificationOptions {
+  id: string;
+  title: string;
+  description: string;
+  avatar: string | null;
+  type: string;
+  createdAt: Date;
+  isUnRead: boolean;
+}
 
-const NOTIFICATIONS = [
+const NOTIFICATIONS: NotificationOptions[] = [
   {
     id: faker.string.uuid(),
     title: 'Your order is placed',
@@ -78,9 +86,9 @@ export default function NotificationsPopover() {
 
   const totalUnRead = notifications.filter((item) => item.isUnRead === true).length;
 
-  const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState<HTMLElement | null>(null);
 
-  const handleOpen = (event) => {
+  const handleOpen = (event: MouseEvent<HTMLElement>) => {
     setOpen(event.currentTarget);
   };
 
@@ -179,20 +187,11 @@ export default function NotificationsPopover() {
 }
 
 // ----------------------------------------------------------------------
+interface NotificationItemProps {
+  notification: NotificationOptions;
+}
 
-NotificationItem.propTypes = {
-  notification: PropTypes.shape({
-    createdAt: PropTypes.instanceOf(Date),
-    id: PropTypes.string,
-    isUnRead: PropTypes.bool,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    type: PropTypes.string,
-    avatar: PropTypes.any,
-  }),
-};
-
-function NotificationItem({ notification }) {
+function NotificationItem({ notification }: NotificationItemProps) {
   const { avatar, title } = renderContent(notification);
 
   return (
@@ -232,7 +231,7 @@ function NotificationItem({ notification }) {
 
 // ----------------------------------------------------------------------
 
-function renderContent(notification) {
+function renderContent(notification: NotificationOptions) {
   const title = (
     <Typography variant="subtitle2">
       {notification.title}
