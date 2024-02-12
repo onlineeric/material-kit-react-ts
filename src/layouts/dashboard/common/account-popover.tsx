@@ -1,5 +1,4 @@
-import { useState } from 'react';
-
+import { MouseEvent, useState } from 'react';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
@@ -8,12 +7,15 @@ import { alpha } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-
 import { account } from 'src/_mock/account';
 
 // ----------------------------------------------------------------------
+interface MenuOption {
+  label: string;
+  icon: string;
+}
 
-const MENU_OPTIONS = [
+const MENU_OPTIONS: MenuOption[] = [
   {
     label: 'Home',
     icon: 'eva:home-fill',
@@ -31,9 +33,9 @@ const MENU_OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
-  const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState<null | HTMLElement>(null);
 
-  const handleOpen = (event) => {
+  const handleOpen = (event: MouseEvent<HTMLElement>) => {
     setOpen(event.currentTarget);
   };
 
