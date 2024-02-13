@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
 
 import Box from '@mui/material/Box';
 
@@ -10,7 +10,12 @@ import { NAV, HEADER } from './config-layout';
 
 const SPACING = 8;
 
-export default function Main({ children, sx, ...other }) {
+interface MainProps {
+  children: ReactNode;
+  sx?: object;
+}
+
+export default function Main({ children, sx, ...other }: MainProps) {
   const lgUp = useResponsive('up', 'lg');
 
   return (
@@ -36,7 +41,3 @@ export default function Main({ children, sx, ...other }) {
   );
 }
 
-Main.propTypes = {
-  children: PropTypes.node,
-  sx: PropTypes.object,
-};
