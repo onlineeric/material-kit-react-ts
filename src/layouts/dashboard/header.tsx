@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-
+import { FC, MouseEvent } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import AppBar from '@mui/material/AppBar';
@@ -20,8 +19,10 @@ import LanguagePopover from './common/language-popover';
 import NotificationsPopover from './common/notifications-popover';
 
 // ----------------------------------------------------------------------
-
-export default function Header({ onOpenNav }) {
+interface HeaderProps {
+  onOpenNav?: (event: MouseEvent<HTMLButtonElement>) => void;
+}
+const Header: FC<HeaderProps> = ({ onOpenNav }) => {
   const theme = useTheme();
 
   const lgUp = useResponsive('up', 'lg');
@@ -76,6 +77,4 @@ export default function Header({ onOpenNav }) {
   );
 }
 
-Header.propTypes = {
-  onOpenNav: PropTypes.func,
-};
+export default Header;
