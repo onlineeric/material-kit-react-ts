@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -24,8 +23,11 @@ import { NAV } from './config-layout';
 import navConfig from './config-navigation';
 
 // ----------------------------------------------------------------------
-
-export default function Nav({ openNav, onCloseNav }) {
+interface NavProps {
+  openNav: boolean;
+  onCloseNav: VoidFunction;
+}
+export default function Nav({ openNav, onCloseNav }: NavProps) {
   const pathname = usePathname();
 
   const upLg = useResponsive('up', 'lg');
@@ -110,7 +112,7 @@ export default function Nav({ openNav, onCloseNav }) {
         },
       }}
     >
-      <Logo sx={{ mt: 3, ml: 4 }} />
+      <Logo sx={{ marginTop: 3, marginLeft: 4 }} />
 
       {renderAccount}
 
@@ -157,14 +159,16 @@ export default function Nav({ openNav, onCloseNav }) {
   );
 }
 
-Nav.propTypes = {
-  openNav: PropTypes.bool,
-  onCloseNav: PropTypes.func,
-};
-
 // ----------------------------------------------------------------------
+interface NavItemProps {
+  item: {
+    title: string;
+    path: string;
+    icon: JSX.Element;
+  };
+}
 
-function NavItem({ item }) {
+function NavItem({ item }: NavItemProps) {
   const pathname = usePathname();
 
   const active = item.path === pathname;
@@ -198,7 +202,3 @@ function NavItem({ item }) {
     </ListItemButton>
   );
 }
-
-NavItem.propTypes = {
-  item: PropTypes.object,
-};
