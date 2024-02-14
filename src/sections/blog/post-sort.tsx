@@ -1,18 +1,19 @@
-import PropTypes from 'prop-types';
-
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 
 // ----------------------------------------------------------------------
 
-PostSort.propTypes = {
-  options: PropTypes.array,
-  onSort: PropTypes.func,
-};
+interface PostSortProps {
+  options: {
+    value: string;
+    label: string;
+  }[];
+  onSort?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-export default function PostSort({ options, onSort }) {
+export default function PostSort({ options, onSort }: PostSortProps) {
   return (
-    <TextField select size="small" value="latest" onChange={onSort}>
+    <TextField select size="small" value="latest" onChange={onSort || undefined}>
       {options.map((option) => (
         <MenuItem key={option.value} value={option.value}>
           {option.label}
