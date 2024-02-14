@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Autocomplete, { autocompleteClasses } from '@mui/material/Autocomplete';
@@ -8,11 +6,14 @@ import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
-PostSearch.propTypes = {
-  posts: PropTypes.array.isRequired,
-};
+interface PostSearchProps {
+  posts: {
+    id: string;
+    title: string;
+  }[];
+}
 
-export default function PostSearch({ posts }) {
+export default function PostSearch({ posts }: PostSearchProps) {
   return (
     <Autocomplete
       sx={{ width: 280 }}
