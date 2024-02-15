@@ -86,8 +86,8 @@ export default function LoginView() {
       <Logo
         sx={{
           position: 'fixed',
-          top: { xs: 16, md: 24 },
-          left: { xs: 16, md: 24 },
+          top: { xs: '16px', md: '24px' },
+          left: { xs: '16px', md: '24px' },
         }}
       />
 

@@ -11,13 +11,18 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { bgBlur } from 'src/theme/css';
 
 import Iconify from 'src/components/iconify';
+import { CustomTheme } from 'src/theme';
 
 // ----------------------------------------------------------------------
 
 const HEADER_MOBILE = 64;
 const HEADER_DESKTOP = 92;
 
-const StyledSearchbar = styled('div')(({ theme }) => ({
+interface StyledSearchbarProps {
+  theme: CustomTheme;
+}
+
+const StyledSearchbar = styled('div')(({ theme }: StyledSearchbarProps) => ({
   ...bgBlur({
     color: theme.palette.background.default,
   }),

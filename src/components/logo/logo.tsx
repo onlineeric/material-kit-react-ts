@@ -1,12 +1,12 @@
-import { CSSProperties, ForwardedRef, forwardRef } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
-import { useTheme } from '@mui/material/styles';
+import { SxProps, useTheme } from '@mui/material/styles';
 import { RouterLink } from 'src/routes/components';
 
 interface LogoProps {
   disabledLink?: boolean;
-  sx?: CSSProperties;
+  sx?: SxProps;
 }
 const Logo = forwardRef((props: LogoProps, ref: ForwardedRef<HTMLDivElement>) => {
   const { disabledLink = false, sx, ...other } = props;
@@ -37,7 +37,7 @@ const Logo = forwardRef((props: LogoProps, ref: ForwardedRef<HTMLDivElement>) =>
         height: 40,
         display: 'inline-flex',
         ...sx,
-      }}
+    }}
       {...other}
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512">
