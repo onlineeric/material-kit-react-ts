@@ -25,7 +25,7 @@ interface PostCardProps {
       name: string;
       avatarUrl: string;
     };
-    createdAt: number;
+    createdAt: Date;
   },
   index: number;
 }
