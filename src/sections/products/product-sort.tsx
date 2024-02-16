@@ -18,9 +18,9 @@ const SORT_OPTIONS = [
 ];
 
 export default function ShopProductSort() {
-  const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState<HTMLElement | null>(null);
 
-  const handleOpen = (event) => {
+  const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
     setOpen(event.currentTarget);
   };
 
