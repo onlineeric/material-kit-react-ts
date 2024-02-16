@@ -1,11 +1,14 @@
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
-
+import { CustomTheme } from 'src/theme';
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
+interface StyledRootProps {
+  theme: CustomTheme;
+}
 
-const StyledRoot = styled('div')(({ theme }) => ({
+const StyledRoot = styled('div')(({ theme }: StyledRootProps) => ({
   zIndex: 999,
   right: 0,
   display: 'flex',
