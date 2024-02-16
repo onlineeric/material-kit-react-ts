@@ -18,11 +18,7 @@ import { CustomTheme } from 'src/theme';
 const HEADER_MOBILE = 64;
 const HEADER_DESKTOP = 92;
 
-interface StyledSearchbarProps {
-  theme: CustomTheme;
-}
-
-const StyledSearchbar = styled('div')(({ theme }: StyledSearchbarProps) => ({
+const StyledSearchbar = styled('div')(({ theme }) => ({
   ...bgBlur({
     color: theme.palette.background.default,
   }),
@@ -35,7 +31,7 @@ const StyledSearchbar = styled('div')(({ theme }: StyledSearchbarProps) => ({
   alignItems: 'center',
   height: HEADER_MOBILE,
   padding: theme.spacing(0, 3),
-  boxShadow: theme.customShadows.z8,
+  boxShadow: (theme as CustomTheme).customShadows.z8,
   [theme.breakpoints.up('md')]: {
     height: HEADER_DESKTOP,
     padding: theme.spacing(0, 5),
