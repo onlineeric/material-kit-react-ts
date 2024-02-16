@@ -12,12 +12,13 @@ import { ColorPreview } from 'src/components/color-utils';
 // ----------------------------------------------------------------------
 interface ShopProductCardProps {
   product: {
-    name: string;
+    id: string;
     cover: string;
-    status: string;
+    name: string;
     price: number;
-    priceSale: number;
+    priceSale?: number | null;
     colors: string[];
+    status?: string;
   };
 }
 
