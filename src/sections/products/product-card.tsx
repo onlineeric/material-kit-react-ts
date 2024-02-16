@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
@@ -12,8 +10,18 @@ import Label from 'src/components/label';
 import { ColorPreview } from 'src/components/color-utils';
 
 // ----------------------------------------------------------------------
+interface ShopProductCardProps {
+  product: {
+    name: string;
+    cover: string;
+    status: string;
+    price: number;
+    priceSale: number;
+    colors: string[];
+  };
+}
 
-export default function ShopProductCard({ product }) {
+export default function ShopProductCard({ product }: ShopProductCardProps) {
   const renderStatus = (
     <Label
       variant="filled"
@@ -83,7 +91,3 @@ export default function ShopProductCard({ product }) {
     </Card>
   );
 }
-
-ShopProductCard.propTypes = {
-  product: PropTypes.object,
-};
