@@ -3,12 +3,8 @@ import { styled } from '@mui/material/styles';
 import { CustomTheme } from 'src/theme';
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-interface StyledRootProps {
-  theme: CustomTheme;
-}
-
-const StyledRoot = styled('div')(({ theme }: StyledRootProps) => ({
+// ----------------------------------------
+const StyledRoot = styled('div')(({ theme }) => ({
   zIndex: 999,
   right: 0,
   display: 'flex',
@@ -20,7 +16,7 @@ const StyledRoot = styled('div')(({ theme }: StyledRootProps) => ({
   paddingLeft: theme.spacing(2),
   paddingRight: theme.spacing(2),
   paddingTop: theme.spacing(1.25),
-  boxShadow: theme.customShadows.z20,
+  boxShadow: (theme as CustomTheme).customShadows.z20,
   color: theme.palette.text.primary,
   backgroundColor: theme.palette.background.paper,
   borderTopLeftRadius: Number(theme.shape.borderRadius) * 2,
