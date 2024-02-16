@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import Tooltip from '@mui/material/Tooltip';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -10,8 +8,12 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
-
-export default function UserTableToolbar({ numSelected, filterName, onFilterName }) {
+interface UserTableToolbarProps {
+  numSelected: number;
+  filterName: string;
+  onFilterName: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+export default function UserTableToolbar({ numSelected, filterName, onFilterName }: UserTableToolbarProps) {
   return (
     <Toolbar
       sx={{
@@ -61,9 +63,3 @@ export default function UserTableToolbar({ numSelected, filterName, onFilterName
     </Toolbar>
   );
 }
-
-UserTableToolbar.propTypes = {
-  numSelected: PropTypes.number,
-  filterName: PropTypes.string,
-  onFilterName: PropTypes.func,
-};
