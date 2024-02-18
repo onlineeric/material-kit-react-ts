@@ -9,8 +9,16 @@ import CardHeader from '@mui/material/CardHeader';
 import { fShortenNumber } from 'src/utils/format-number';
 
 // ----------------------------------------------------------------------
-
-export default function AppTrafficBySite({ title, subheader, list, ...other }) {
+interface AppTrafficBySiteProps {
+  title: string;
+  subheader: string;
+  list: {
+    name: string;
+    value: number;
+    icon: JSX.Element;
+  }[];
+}
+export default function AppTrafficBySite({ title, subheader, list, ...other }: AppTrafficBySiteProps) {
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
